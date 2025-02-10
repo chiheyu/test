@@ -2,7 +2,9 @@
     "C_Cpp.errorSquiggles": "enabledIfIncludesResolve",
     "files.associations": {
         "math.h": "c",
-        "fenv.h": "c"
+        "fenv.h": "c",
+        "stdio.h": "c",
+        "stdarg.h": "c"
     },
     "files.autoGuessEncoding": true,
     "files.autoSave": "off",
