@@ -7,7 +7,8 @@
         "stdarg.h": "c",
         "stdlib.h": "c",
         "stdbool.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "signal.h": "c"
     },
     "files.autoGuessEncoding": true,
     "files.autoSave": "off",

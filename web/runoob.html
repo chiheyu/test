@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>菜鸟教程(runoob.com)</title>
+    <title>父子页面层叠样式表</title>
+    <link rel="stylesheet" type="text/css" href="test.css">
+
+    <style>
+    </style>
 </head>
 <body>
- 
-<h1>我的第一个标题</h1>
- 
-<p>我的第一个段落。</p>
- 
+    <div id = "container">
+        <div>
+            <h2>经典励志故事</h2>
+            <hr color="red">
+            <p><strong>导语</strong></p>
+        </div>
+        <div id = "main">
+            <div class="chengyu">
+                <div class="simple">
+                    <h3>悬梁刺股</h3>
+                    <p>《悬梁刺股》是一部由张爱玲创作的长篇小说，讲述了她从小就被父亲悬梁刺股的故事。小说以一个女孩的视角，讲述了她从小被父亲悬梁刺股的经过，以及她如何面对自己的悬梁刺股。小说的写作风格独特，语言朴实，描写生动，情节跌宕起伏，令人感动。</p>
+                </div>
+                <div class="content">
+                    <h3><a href = "images/preview.jpg">观看详情</a></h3>
+                    <p>省略</p>
+                </div>
+            </div>
+            <div id = "details">
+                <embed name="embed" src = "images/preview.jpg" width="1045px" height="200px" />
+            </div>
+        </div>
+    </div>
 </body>
 </html>
