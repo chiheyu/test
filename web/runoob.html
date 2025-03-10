@@ -1,34 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>父子页面层叠样式表</title>
-    <link rel="stylesheet" type="text/css" href="test.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        h1 {
+            text-align: center;
+            color: red;
+        }
+        p {
+            text-indent: 2em;
+            text-align: left;
+            font-size: 18px;
+        }
     </style>
-</head>
+    <title>贺宇的简历</title>
+</head> 
 <body>
-    <div id = "container">
-        <div>
-            <h2>经典励志故事</h2>
-            <hr color="red">
-            <p><strong>导语</strong></p>
-        </div>
-        <div id = "main">
-            <div class="chengyu">
-                <div class="simple">
-                    <h3>悬梁刺股</h3>
-                    <p>《悬梁刺股》是一部由张爱玲创作的长篇小说，讲述了她从小就被父亲悬梁刺股的故事。小说以一个女孩的视角，讲述了她从小被父亲悬梁刺股的经过，以及她如何面对自己的悬梁刺股。小说的写作风格独特，语言朴实，描写生动，情节跌宕起伏，令人感动。</p>
-                </div>
-                <div class="content">
-                    <h3><a href = "images/preview.jpg">观看详情</a></h3>
-                    <p>省略</p>
-                </div>
-            </div>
-            <div id = "details">
-                <embed name="embed" src = "images/preview.jpg" width="1045px" height="200px" />
-            </div>
-        </div>
-    </div>
+    <h1>简历</h1>
+    <hr size = "2" color = "#bed" width = "90%" align = "center"/>
+    <p>姓名：<a href = "images/微信图片_20241210211238.jpg" alt = "贺宇图片">贺宇</a></p>
+    <p>性别：男</p>
+    <p>年龄：22</p>
+    <p>住址：<a href = "https://map.baidu.com/poi/%E6%A1%83%E5%9B%AD%E5%B0%8F%E5%8C%BA/@12186644.344217025,4345997.662555546,19.38z?uid=486237d6ebe7d91a17c8f617&ugc_type=3&ugc_ver=1&device_ratio=2&compat=1&pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl">陕西省延安市宝塔区桃园小区</a></p>
+    <p>学历：<a href = "https://www.snut.edu.cn/" alt = "陕西理工大学">本科</a></p>
+    <p>专业：网络工程</p>
+    <p>电话：18291107686</p>
+    <p>邮箱：<a href = "mailto:2765201052@qq.com">2765201052@qq.com</a></p>
 </body>
 </html>
