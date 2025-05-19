@@ -25,5 +25,7 @@
     "python.testing.unittestEnabled": false,
     "python.testing.pytestArgs": [
         "python"
-    ]
+    ],
+    "livePreview.defaultPreviewPath": "/web/test.html",
+    "dotnet.defaultSolution": "disable"
 }

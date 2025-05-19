@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原神 - 关于我们</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind自定义颜色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007BFF', // 原神蓝
+                        secondary: '#FF8000', // 原神橙
+                        accent: '#FF0000', // 原神红
+                        dark: '#1E293B', // 深色背景
+                        light: '#F8FAFC', // 浅色背景
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['"Noto Serif SC"', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+            }
+        }
+    </style>
+    
+    <style>
+        /* 导入中文字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+        
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 123, 255, 0.5);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 123, 255, 0.8);
+        }
+        
+        /* 背景视差效果 */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body class="bg-light font-sans text-dark min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white/80 bg-blur border-b border-gray-200 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center">
+                        <img src="https://picsum.photos/40/40" alt="原神Logo" class="h-10 w-10 rounded-lg">
+                        <span class="ml-2 text-xl font-bold text-primary">原神</span>
+                    </a>
+                </div>
+                
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200">首页</a>
+                    <a href="#" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200">七国</a>
+                    <a href="#" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200">图集</a>
+                    <a href="#" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200">人物</a>
+                    <a href="#" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200">下载</a>
+                    <a href="#" class="text-primary border-b-2 border-primary px-3 py-2 text-sm font-medium">关于我们</a>
+                </nav>
+                
+                <!-- 用户操作 -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">
+                        <i class="fa-solid fa-user-circle text-xl"></i>
+                    </a>
+                    <a href="#" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md transition-colors duration-200">
+                        登录
+                    </a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden flex items-center">
+                    <button type="button" class="mobile-menu-button text-gray-700 hover:text-primary">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div class="md:hidden hidden mobile-menu bg-white border-t border-gray-200 shadow-lg">
+            <div class="container mx-auto px-4 py-3 space-y-1">
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">首页</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">七国</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">图集</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">人物</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">下载</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-primary bg-primary/10 rounded-md">关于我们</a>
+                <div class="pt-2 flex space-x-2">
+                    <a href="#" class="flex-1 text-center bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md transition-colors duration-200">
+                        登录
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main class="flex-grow">
+        <!-- 英雄区域 -->
+        <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://picsum.photos/1920/1080?random=1" alt="原神背景" class="w-full h-full object-cover parallax-bg">
+                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30"></div>
+            </div>
+            
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white text-shadow-lg mb-4">关于原神</h1>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 max-w-2xl mx-auto text-shadow">
+                    探索提瓦特大陆的奇幻冒险，与我们一起了解原神的故事
+                </p>
+                <div class="mt-8">
+                    <a href="#about-game" class="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        了解更多 <i class="fa-solid fa-arrow-down ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 波浪效果 -->
+            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-12 md:h-20">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C0,0,31,30,31,30z" class="fill-light"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 游戏简介 -->
+        <section id="about-game" class="py-16 bg-light">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">游戏简介</h2>
+                        <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+                    </div>
+                    
+                    <div class="prose prose-lg max-w-none">
+                        <p class="text-lg">
+                            <strong class="text-primary">原神</strong>是一款由中国游戏公司miHoYo开发的开放世界角色扮演游戏，于2017年1月底立项，原初测试于2019年6月21日开启。
+                        </p>
+                        
+                        <p class="mt-4">
+                            游戏发生在一个被称作“提瓦特大陆”的幻想世界，在这里，被神选中的人将被授予“神之眼”，导引元素之力。玩家将扮演一位名为“旅行者”的神秘角色，在自由的旅行中邂逅性格各异、能力独特的同伴们，和他们一起击败强敌，找回失散的亲人——同时，逐步发掘“原神”的真相。
+                        </p>
+                        
+                        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
+                                <div class="h-48 overflow-hidden">
+                                    <img src="https://picsum.photos/600/400?random=2" alt="开放世界" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-dark mb-2">开放世界</h3>
+                                    <p class="text-gray-600">自由探索提瓦特大陆的每一个角落，发现隐藏的宝藏和秘密。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
+                                <div class="h-48 overflow-hidden">
+                                    <img src="https://picsum.photos/600/400?random=3" alt="元素战斗" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-dark mb-2">元素战斗</h3>
+                                    <p class="text-gray-600">使用不同元素的角色，组合出强大的元素反应，击败各种敌人。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
+                                <div class="h-48 overflow-hidden">
+                                    <img src="https://picsum.photos/600/400?random=4" alt="丰富剧情" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-dark mb-2">丰富剧情</h3>
+                                    <p class="text-gray-600">体验每个角色独特的故事线，深入了解提瓦特大陆的历史和文化。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="mt-8 text-lg">
+                            玩家将扮演“旅行者”，在这个世界中探索、战斗和解谜。游戏中有着丰富的<em class="text-secondary font-medium">武器、装备、道具、怪物、副本、活动、奇遇</em>等元素设定，玩家可以与其他玩家进行多人对战，也可以与机器人进行对抗。游戏的画面精美，音效清晰，玩家可以边打边聊，还可以与好友进行互动。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 玩家心声 -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">玩家心声</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto">来自原神玩家的真实体验与感受</p>
+                        <div class="w-20 h-1 bg-primary mx-auto rounded-full mt-4"></div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 relative overflow-hidden">
+                        <!-- 装饰元素 -->
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full"></div>
+                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center mb-6">
+                                <img src="https://picsum.photos/100/100?random=5" alt="玩家头像" class="w-16 h-16 rounded-full object-cover border-4 border-primary/20">
+                                <div class="ml-4">
+                                    <h3 class="text-xl font-semibold text-dark">老玩家·李明</h3>
+                                    <p class="text-gray-500">游戏时长: 2000+小时</p>
+                                </div>
+                            </div>
+                            
+                            <blockquote class="text-lg text-gray-700 italic">
+                                <p>作为一名原神的元老级玩家，我已经陪伴原神走过了6个年头。在游戏中，我有遇到过大佬，也成为过别人眼中的大佬；带过萌新，曾经也是萌新中的一员。原神，作为一款开放世界的大作，在我眼中有着无限的魅力，也有着无限的可能。</p>
+                                <p class="mt-4">在游戏中，<strong class="text-primary">你可以在不同的世界中自由穿梭，与众不同的角色展开各种冒险，性格各异的角色和精美的地图场景</strong>是原神的魅力所在。</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 问卷调查 -->
+        <section id="survey" class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">原神问卷调查</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto">您的反馈对我们非常重要，帮助我们不断改进游戏体验</p>
+                        <div class="w-20 h-1 bg-primary mx-auto rounded-full mt-4"></div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-xl p-8 md:p-10 border border-gray-100">
+                        <form id="surveyForm" class="space-y-6">
+                            <!-- 个人信息 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="username" class="block text-sm font-medium text-gray-700 mb-1">您的昵称</label>
+                                    <input type="text" id="username" name="username" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors duration-200" placeholder="请输入您在游戏中的昵称">
+                                </div>
+                                
+                                <div>
+                                    <label for="playTime" class="block text-sm font-medium text-gray-700 mb-1">您玩原神多久了？</label>
+                                    <select id="playTime" name="playTime" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors duration-200">
+                                        <option value="">请选择</option>
+                                        <option value="less-than-3">3个月以内</option>
+                                        <option value="3-6">3-6个月</option>
+                                        <option value="6-12">6-12个月</option>
+                                        <option value="1-2">1-2年</option>
+                                        <option value="more-than-2">2年以上</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- 最喜欢的角色 -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-3">您最喜欢的角色是？（可多选）</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="character1" name="favoriteCharacters" value="钟离" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="character1" class="ml-2 block text-sm text-gray-700">钟离</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="character2" name="favoriteCharacters" value="魈" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="character2" class="ml-2 block text-sm text-gray-700">魈</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="character3" name="favoriteCharacters" value="甘雨" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="character3" class="ml-2 block text-sm text-gray-700">甘雨</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="character4" name="favoriteCharacters" value="旅行者" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="character4" class="ml-2 block text-sm text-gray-700">旅行者</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="character5" name="favoriteCharacters" value="温迪" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="character5" class="ml-2 block text-sm text-gray-700">温迪</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="character6" name="favoriteCharacters" value="其他" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="character6" class="ml-2 block text-sm text-gray-700">其他</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 喜欢的方面 -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-3">您喜欢原神的哪些方面？（可多选）</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="aspect1" name="likedAspects" value="剧情" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="aspect1" class="ml-2 block text-sm text-gray-700">剧情</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="aspect2" name="likedAspects" value="角色" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="aspect2" class="ml-2 block text-sm text-gray-700">角色</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="aspect3" name="likedAspects" value="画面" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="aspect3" class="ml-2 block text-sm text-gray-700">画面</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="aspect4" name="likedAspects" value="音乐" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="aspect4" class="ml-2 block text-sm text-gray-700">音乐</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="aspect5" name="likedAspects" value="战斗系统" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="aspect5" class="ml-2 block text-sm text-gray-700">战斗系统</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="aspect6" name="likedAspects" value="开放世界探索" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="aspect6" class="ml-2 block text-sm text-gray-700">开放世界探索</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 建议 -->
+                            <div>
+                                <label for="suggestion" class="block text-sm font-medium text-gray-700 mb-1">您对原神有什么建议？</label>
+                                <textarea id="suggestion" name="suggestion" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors duration-200" placeholder="请输入您的建议..."></textarea>
+                            </div>
+                            
+                            <!-- 提交按钮 -->
+                            <div class="flex justify-center pt-4">
+                                <button type="submit" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                    提交问卷 <i class="fa-solid fa-paper-plane ml-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们 -->
+        <section class="py-16 bg-gray-900 text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-white mb-4">联系我们</h2>
+                        <p class="text-gray-300 max-w-2xl mx-auto">如有任何问题或建议，请通过以下方式联系我们</p>
+                        <div class="w-20 h-1 bg-primary mx-auto rounded-full mt-4"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-gray-800/50 rounded-lg p-6 text-center transition-all duration-300 hover:bg-gray-800 transform hover:-translate-y-1">
+                            <div class="text-primary text-3xl mb-4">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">邮箱</h3>
+                            <p class="text-gray-300">support@yuanshen.com</p>
+                        </div>
+                        
+                        <div class="bg-gray-800/50 rounded-lg p-6 text-center transition-all duration-300 hover:bg-gray-800 transform hover:-translate-y-1">
+                            <div class="text-primary text-3xl mb-4">
+                                <i class="fa-brands fa-weibo"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">微博</h3>
+                            <p class="text-gray-300">@原神_GenshinImpact</p>
+                        </div>
+                        
+                        <div class="bg-gray-800/50 rounded-lg p-6 text-center transition-all duration-300 hover:bg-gray-800 transform hover:-translate-y-1">
+                            <div class="text-primary text-3xl mb-4">
+                                <i class="fa-brands fa-wechat"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">微信公众号</h3>
+                            <p class="text-gray-300">原神</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/40/40" alt="原神Logo" class="h-10 w-10 rounded-lg">
+                        <span class="ml-2 text-xl font-bold text-white">原神</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">探索提瓦特大陆的奇幻冒险</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors duration-200">首页</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-200">七国</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-200">图集</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-200">人物</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-200">下载</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors duration-200">帮助中心</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-200">联系我们</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-200">隐私政策</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-200">用户协议</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">关注我们</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-200">
+                            <i class="fa-brands fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-200">
+                            <i class="fa-brands fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-200">
+                            <i class="fa-brands fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-200">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="mt-4 text-gray-400 text-sm">订阅我们的新闻通讯</p>
+                    <div class="mt-2 flex">
+                        <input type="email" placeholder="您的邮箱地址" class="px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-md focus:outline-none focus:ring-1 focus:ring-primary text-white w-full">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-md transition-colors duration-200">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
+                <p>© 2025 原神. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+        
+        // 滚动时导航栏样式变化
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('shadow-sm');
+            }
+        });
+        
+        // 问卷调查表单提交
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 简单验证
+            const username = document.getElementById('username').value;
+            const playTime = document.getElementById('playTime').value;
+            
+            if (!username) {
+                alert('请输入您的昵称');
+                return;
+            }
+            
+            if (!playTime) {
+                alert('请选择您的游戏时长');
+                return;
+            }
+            
+            // 模拟表单提交成功
+            alert('问卷提交成功，感谢您的反馈！');
+            this.reset();
+        });
+        
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // 如果是移动端，点击后关闭菜单
+                    if (!document.querySelector('.mobile-menu').classList.contains('hidden')) {
+                        document.querySelector('.mobile-menu').classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>    

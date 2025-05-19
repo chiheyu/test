@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>原神启动</title>
+    <meta charset="UTF-8">
+    <style>
+        h2 {
+            color: blue;
+            font-family: "微软雅黑";
+            font-size: 24px;
+        }
+        p {
+            font-family: "宋体";
+            font-size: 24px;
+            text-indent: 2em;
+            line-height: 1.5em;
+            letter-spacing: 2px;
+        }
+        form {
+            font-family: "宋体";
+            font-size: 18px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        input[type="submit"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center">欢迎来到当下最热门的开放类大世界游戏</h1>
+    <p style="text-align:center" font-size="30px">
+        <font color="red">
+            <ruby>
+            原<rp>(</rp><rt>yuan</rt><rp>)</rp>
+            神<rp>(</rp><rt>shen</rt><rp>)</rp>！
+            </ruby>
+        </font>
+    </p>
+    <hr color="red" size="2px" width="100%">
+    <h2>游戏简介</h2>
+    <p>
+        <strong>原神</strong>是一款由中国游戏公司miHoYo开发的开放世界角色扮演游戏，于2017年1月底立项，原初测试于2019年6月21日开启。游戏发生在一个被称作“提瓦特大陆”的幻想世界，在这里，被神选中的人将被授予“神之眼”，导引元素之力。玩家将扮演一位名为“旅行者”的神秘角色，在自由的旅行中邂逅性格各异、能力独特的同伴们，和他们一起击败强敌，找回失散的亲人——同时，逐步发掘“原神”的真相。玩家将扮演“旅行者”，在这个世界中探索、战斗和解谜。游戏中有着丰富的<em><font color=#FF8000>武器、装备、道具、怪物、副本、活动、奇遇</font></em>等元素设定，玩家可以与其他玩家进行多人对战，也可以与机器人进行对抗。游戏的画面精美，音效清晰，玩家可以边打边聊，还可以与好友进行互动。 
+    </p>
+    <hr size="2px" width="100%">
+    <p>作为一名原神的元老级玩家，我已经陪伴原神走过了6个年头。在游戏中，我有遇到过大佬，也成为过别人眼中的大佬；带过萌新，曾经也是萌新中的一员。原神，作为一款开放世界的大作，在我眼中有着无限的魅力，也有着无限的可能。在游戏中，<strong style="color:red">你可以在不同的世界中自由穿梭，与众不同的角色展开各种冒险，性格各异的角色和精美的地图场景</strong>是原神的魅力所在。</p>
+
+    <hr size="2px" width="100%">
+    <h2>原神问卷调查</h2>
+    <form>
+        <label for="playTime">您玩原神多久了？</label>
+        <input type="text" id="playTime" name="playTime"><br>
+
+        <label>您最喜欢的角色是？</label><br>
+        <input type="radio" id="character1" name="favoriteCharacter" value="钟离">
+        <label for="character1">钟离</label><br>
+        <input type="radio" id="character2" name="favoriteCharacter" value="魈">
+        <label for="character2">魈</label><br>
+        <input type="radio" id="character3" name="favoriteCharacter" value="甘雨">
+        <label for="character3">甘雨</label><br>
+
+        <label>您喜欢原神的哪些方面？（可多选）</label><br>
+        <input type="checkbox" id="aspect1" name="likedAspects" value="剧情">
+        <label for="aspect1">剧情</label><br>
+        <input type="checkbox" id="aspect2" name="likedAspects" value="角色">
+        <label for="aspect2">角色</label><br>
+        <input type="checkbox" id="aspect3" name="likedAspects" value="画面">
+        <label for="aspect3">画面</label><br>
+
+        <label for="suggestion">您对原神有什么建议？</label><br>
+        <textarea id="suggestion" name="suggestion" rows="4" cols="50"></textarea><br>
+
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>
