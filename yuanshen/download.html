@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原神下载 | Genshin Impact Download</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E3A8A',
+                        secondary: '#D97706',
+                        accent: '#BE123C',
+                        neutral: '#1F2937',
+                        'neutral-light': '#F3F4F6',
+                    },
+                    fontFamily: {
+                        genshin: ['"ZCOOL XiaoWei"', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .bg-pattern {
+                background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            }
+            .nav-link {
+                position: relative;
+            }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: -4px;
+                left: 0;
+                background-color: #BE123C;
+                transition: width 0.3s ease;
+            }
+            .nav-link:hover::after {
+                width: 100%;
+            }
+            .btn-primary {
+                @apply bg-accent hover:bg-accent/80 text-white font-medium py-3 px-6 rounded transition-all duration-300 transform hover:scale-105;
+            }
+            .btn-secondary {
+                @apply bg-secondary hover:bg-secondary/80 text-white font-medium py-3 px-6 rounded transition-all duration-300 transform hover:scale-105;
+            }
+            .download-card {
+                @apply bg-primary/30 backdrop-blur-sm rounded-xl p-6 border border-primary/50 hover:border-secondary/50 transition-all duration-300 transform hover:-translate-y-2;
+            }
+            .system-requirement {
+                @apply bg-neutral-light/5 rounded-lg p-4 mb-4 border border-primary/20;
+            }
+            .fade-in {
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral font-genshin text-neutral-light bg-pattern">
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-primary/90 backdrop-blur-md shadow-lg transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="text-2xl font-bold text-white flex items-center">
+                    <img src="images/logo.png" alt="原神" class="h-10 mr-2">
+                    <span>原神</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link text-white hover:text-secondary transition-colors font-medium">首页</a>
+                <a href="#" class="nav-link text-white hover:text-secondary transition-colors">七国</a>
+                <a href="imagehub.html" class="nav-link text-white hover:text-secondary transition-colors">图集</a>
+                <a href="characters.html" class="nav-link text-white hover:text-secondary transition-colors">人物</a>
+                <a href="download.html" class="nav-link text-white hover:text-secondary transition-colors">下载</a>
+                <a href="suggest.html" class="nav-link text-white hover:text-secondary transition-colors">关于我们</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="login.html" class="hidden md:inline-block text-white hover:text-secondary transition-colors">
+                    <i class="fa fa-user-circle mr-1"></i> 登录
+                </a>
+                <button class="md:hidden text-white text-xl" id="mobile-menu-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-primary/95 backdrop-blur-md" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="index.html" class="text-white hover:text-secondary transition-colors py-2 font-medium">首页</a>
+                <a href="#" class="text-white hover:text-secondary transition-colors py-2">七国</a>
+                <a href="imagehub.html" class="text-white hover:text-secondary transition-colors py-2">图集</a>
+                <a href="characters.html" class="text-white hover:text-secondary transition-colors py-2">人物</a>
+                <a href="download.html" class="text-white hover:text-secondary transition-colors py-2">下载</a>
+                <a href="suggest.html" class="text-white hover:text-secondary transition-colors py-2">关于我们</a>
+                <a href="login.html" class="text-white hover:text-secondary transition-colors py-2">
+                    <i class="fa fa-user-circle mr-1"></i> 登录
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main class="pt-24 pb-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">下载原神</h1>
+                <p class="text-gray-300 max-w-2xl mx-auto">探索提瓦特大陆的奇幻世界，与各元素的角色一起展开冒险。立即下载游戏，开启你的旅程！</p>
+            </div>
+
+            <!-- 下载选项 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- PC 端下载 -->
+                <div class="download-card fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-secondary/20 p-3 rounded-lg mr-4">
+                            <i class="fa fa-desktop text-secondary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">PC 客户端</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">在电脑上体验原神的高品质画面和流畅操作。</p>
+                    <div class="flex flex-col space-y-3">
+                        <button class="btn-secondary flex items-center justify-center">
+                            <i class="fa fa-download mr-2"></i> 下载 PC 客户端
+                        </button>
+                        <button class="btn-primary flex items-center justify-center">
+                            <i class="fa fa-cloud mr-2"></i> 云游戏体验
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 移动端下载 -->
+                <div class="download-card fade-in" style="animation-delay: 0.1s;">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-secondary/20 p-3 rounded-lg mr-4">
+                            <i class="fa fa-mobile text-secondary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">移动设备</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">随时随地探索提瓦特，在手机和平板上畅玩。</p>
+                    <div class="flex flex-col space-y-3">
+                        <button class="btn-secondary flex items-center justify-center">
+                            <i class="fa fa-apple mr-2"></i> App Store
+                        </button>
+                        <button class="btn-secondary flex items-center justify-center">
+                            <i class="fa fa-android mr-2"></i> Google Play
+                        </button>
+                        <button class="btn-primary flex items-center justify-center">
+                            <i class="fa fa-file mr-2"></i> 安卓 APK 下载
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 主机端下载 -->
+                <div class="download-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-secondary/20 p-3 rounded-lg mr-4">
+                            <i class="fa fa-gamepad text-secondary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">主机平台</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">在电视上享受震撼的游戏体验，支持跨平台存档。</p>
+                    <div class="flex flex-col space-y-3">
+                        <button class="btn-secondary flex items-center justify-center">
+                            <i class="fa-brands fa-playstation mr-2"></i> PlayStation 5
+                        </button>
+                        <button class="btn-secondary flex items-center justify-center">
+                            <i class="fa-brands fa-playstation mr-2"></i> PlayStation 4
+                        </button>
+                        <button class="btn-primary flex items-center justify-center">
+                            <i class="fa fa-info-circle mr-2"></i> 了解更多
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 系统需求 -->
+            <div class="mb-16">
+                <h2 class="text-2xl font-bold text-white mb-6">系统需求</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 最低配置 -->
+                    <div class="system-requirement">
+                        <h3 class="text-xl font-bold text-secondary mb-4">最低配置</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex">
+                                <span class="w-32 text-gray-400">操作系统:</span>
+                                <span>Windows 7 SP1 64-bit</span>
+                            </li>
+                            <li class="flex">
+                                <span class="w-32 text-gray-400">处理器:</span>
+                                <span>Intel Core i5-7500 / AMD Ryzen 5 1500X</span>
+                            </li>
+                            <li class="flex">
+                                <span class="w-32 text-gray-400">内存:</span>
+                                <span>8 GB RAM</span>
+                            </li>
+                            <li class="flex">
+                                <span class="w-32 text-gray-400">显卡:</span>
+                                <span>NVIDIA GeForce GTX 1050 Ti / AMD Radeon RX 560</span>
+                            </li>
+                            <li class="flex">
+                                <span class="w-32 text-gray-400">存储空间:</span>
+                                <span>至少 30 GB 可用空间</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 推荐配置 -->
+                    <div class="system-requirement">
+                        <h3 class="text-xl font-bold text-secondary mb-4">推荐配置</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex">
+                                <span class="w-32 text-gray-400">操作系统:</span>
+                                <span>Windows 10 64-bit</span>
+                            </li>
+                            <li class="flex">
+                                <span class="w-32 text-gray-400">处理器:</span>
+                                <span>Intel Core i7-8700K / AMD Ryzen 7 3700X</span>
+                            </li>
+                            <li class="flex">
+                                <span class="w-32 text-gray-400">内存:</span>
+                                <span>16 GB RAM</span>
+                            </li>
+                            <li class="flex">
+                                <span class="w-32 text-gray-400">显卡:</span>
+                                <span>NVIDIA GeForce RTX 2060 / AMD Radeon RX 5700 XT</span>
+                            </li>
+                            <li class="flex">
+                                <span class="w-32 text-gray-400">存储空间:</span>
+                                <span>至少 45 GB 可用空间</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 常见问题 -->
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-6">下载常见问题</h2>
+                <div class="space-y-4">
+                    <div class="bg-neutral-light/5 rounded-lg p-4 border border-primary/20 hover:border-secondary/30 transition-colors">
+                        <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                            <h3 class="text-lg font-medium text-white">如何更新游戏到最新版本？</h3>
+                            <i class="fa fa-chevron-down text-secondary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden mt-3 text-gray-300">
+                            <p>游戏会在启动时自动检查更新。如遇到问题，您可以：</p>
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>在游戏启动器中点击"检查更新"</li>
+                                <li>通过应用商店更新移动版本</li>
+                                <li>在主机平台的游戏库中更新</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-neutral-light/5 rounded-lg p-4 border border-primary/20 hover:border-secondary/30 transition-colors">
+                        <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                            <h3 class="text-lg font-medium text-white">不同平台之间可以共享存档吗？</h3>
+                            <i class="fa fa-chevron-down text-secondary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden mt-3 text-gray-300">
+                            <p>原神支持跨平台存档，包括PC、移动设备和PlayStation。您可以通过绑定米哈游账号在不同设备间同步游戏进度。但请注意，PlayStation版本需要单独绑定账号。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-neutral-light/5 rounded-lg p-4 border border-primary/20 hover:border-secondary/30 transition-colors">
+                        <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                            <h3 class="text-lg font-medium text-white">下载需要多长时间？</h3>
+                            <i class="fa fa-chevron-down text-secondary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden mt-3 text-gray-300">
+                            <p>下载时间取决于您的网络速度和设备性能。初始安装包约为20-30GB，完整游戏需要约45GB空间。高速网络下下载可能需要30分钟到2小时不等。</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-neutral-light/5 rounded-lg p-4 border border-primary/20 hover:border-secondary/30 transition-colors">
+                        <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                            <h3 class="text-lg font-medium text-white">安装过程中出现错误怎么办？</h3>
+                            <i class="fa fa-chevron-down text-secondary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden mt-3 text-gray-300">
+                            <p>如果遇到安装错误，请尝试以下步骤：</p>
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>检查网络连接是否稳定</li>
+                                <li>确保有足够的存储空间</li>
+                                <li>关闭其他占用带宽的应用程序</li>
+                                <li>以管理员身份运行安装程序</li>
+                                <li>如果问题持续存在，请联系客服支持</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-neutral-dark py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-xl font-bold text-white flex items-center">
+                        <img src="images/logo.png" alt="原神" class="h-8 mr-2">
+                        <span>原神</span>
+                    </a>
+                    <p class="text-gray-400 mt-2">© 2023 miHoYo. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-brands fa-weibo text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-brands fa-wechat text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-brands fa-bilibili text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-brands fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-brands fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-white font-medium mb-4">关于原神</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">游戏介绍</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">世界观</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">角色介绍</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">开发历程</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-medium mb-4">支持与服务</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">帮助中心</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">意见反馈</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">防沉迷系统</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-medium mb-4">法律信息</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">隐私政策</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">用户协议</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">知识产权</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">未成年人保护</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-3');
+            } else {
+                header.classList.add('py-3');
+                header.classList.remove('py-2');
+            }
+        });
+
+        // FAQ 折叠功能
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+            
+            // 关闭其他打开的FAQ
+            document.querySelectorAll('.faq-content').forEach(item => {
+                if (item !== content && !item.classList.contains('hidden')) {
+                    item.classList.add('hidden');
+                    item.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

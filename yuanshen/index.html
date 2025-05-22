@@ -1,170 +1,293 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>原神</title>
-    <style type="text/css">
-        /*导航栏*/
-        #tdl {
-            background: url(images/logo.png) no-repeat left;
-            background-size: contain;
-            height: 100px;
-            width: 200px;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原神 | Genshin Impact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E3A8A', // 深蓝主色调，代表原神的神秘氛围
+                        secondary: '#D97706', // 橙色辅助色，代表原神的活力
+                        accent: '#BE123C', // 红色点缀色，用于强调和突出
+                        neutral: '#1F2937', // 深色中性色
+                        'neutral-light': '#F3F4F6', // 浅色中性色
+                    },
+                    fontFamily: {
+                        genshin: ['"ZCOOL XiaoWei"', 'serif'],
+                    },
+                }
+            }
         }
-
-        #td1 a {
-            display: block;
-            height: 100%;
-            width: 100%;
-        }
-
-        table {
-            border: 1px;
-            border-collapse: collapse;
-            margin: 0 auto;
-        }
-
-        #td2 {
-            background: rgb(0, 217, 255);
-            height: 50px;
-            width: 100%;
-            font-size: 28px;
-        }
-
-        #td3 {
-            background: rgb(255, 255, 255);
-            height: 300px;
-            width: 100%;
-            text-align: center;
-        }
-
-        #td4 {
-            background: rgb(255, 255, 255);
-            height: 600px;
-            width: 100%;
-        }
-
-        #td5 {
-            background: rgb(255, 255, 255);
-            height: 50px;
-            width: 100%;
-        }
-
-        #lg a {
-            color: black;
-            height: 50px;
-            width: 100%;
-            font-size: 28px;
-            align-items: right;
-        }
-
-        a {
-            color: white;
-            display: inline-block;
-        }
-
-        a:link,
-        a:visited,
-        a:active {
-            text-decoration: none;
-            color: white;
-        }
-
-        a:hover {
-            border-bottom: 4px solid #FF0000;
-        }
-
-        p {
-            text-indent: 2em;
-            font-size: 24px;
-            line-height: 1.5em;
-            letter-spacing: 2px;
-        }
-
-        #div1 {
-            text-align: center;
-            width: 1000px;
-            height: 300px;
-            display: inline-block;
-        }
-
-        img {
-            padding: 0px;
-            width: 200px;
-            height: 160px;
-            border: 3px groove rgba(255, 0, 0, 0.703);
-        }
-
-        #td3 img {
-            width: auto;
-            height: 100%;
-            vertical-align: middle;
-            border: none;
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .bg-pattern {
+                background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            }
+            .nav-link {
+                position: relative;
+            }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: -4px;
+                left: 0;
+                background-color: #BE123C;
+                transition: width 0.3s ease;
+            }
+            .nav-link:hover::after {
+                width: 100%;
+            }
+            .carousel-item {
+                transition: transform 0.5s ease-in-out;
+            }
+            .carousel-indicator {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+            .carousel-indicator.active {
+                background-color: #BE123C;
+            }
         }
     </style>
 </head>
 
-<body>
-    <table width="1000px" height="1100px">
-        <tr>
-            <td>
-                <table id="tdl" align="left">
-                    <tr>
-                        <td><a href="#"></a></td>
-                    </tr>
-                </table>
-            </td>
-            <td colspan="2">
-                <table id="lg" width="200px" height="100px" font-size="20px">
-                    <tr>
-                        <td><a href="login.html">登录</a></td>
-                        <td><a href="login.html">注册</a></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <table id="td2">
-                    <tr>
-                        <td><a href="index.html">首页</a></td>
-                        <td><a href="#">七国</a></td>
-                        <td><a href="imagehub.html">图集</a></td>
-                        <td><a href="#">人物</a></td>
-                        <td><a href="#">下载</a></td>
-                        <td><a href="suggest.html">关于我们</a></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td id="td3" colspan="4">
-                <img src="images/slideshow(1).jpg" alt="原神">
-            </td>
-        </tr>
-        <tr>
-            <td id="td4" colspan="4">
-                <p>
-                    <strong>原神</strong>，一款由中国游戏公司miHoYo开发的开放世界角色扮演游戏，于2017年1月底立项，原初测试于2019年6月21日开启。游戏发生在一个被称作“提瓦特大陆”的幻想世界，在这里，被神选中的人将被授予“神之眼”，导引元素之力。玩家将扮演一位名为“旅行者”的神秘角色，在自由的旅行中邂逅性格各异、能力独特的同伴们，和他们一起击败强敌，找回失散的亲人——同时，逐步发掘“原神”的真相。玩家将扮演“旅行者”，在这个世界中探索、战斗和解谜。游戏中有着丰富的<em>
-                        <font color=#FF8000>武器、装备、道具、怪物、副本、活动、奇遇</font>
-                    </em>等元素设定，玩家可以选择单人游玩事件，也可以与玩家联机。游戏的画面精美，音效清晰，玩家可以边玩边聊，与好友进行各种互动。
-                </p>
-                <div id="div1">
-                    <img src="images/image.png">
-                    <img src="images/image (1).png">
-                    <img src="images/image (2).png">
-                    <img src="images/image (3).png">
+<body class="bg-neutral font-genshin text-neutral-light bg-pattern">
+    <!-- 导航栏 -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-primary/90 backdrop-blur-md shadow-lg transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="text-2xl font-bold text-white flex items-center">
+                    <img src="images/logo.png" alt="原神" class="h-10 mr-2">
+                    <span>原神</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html"
+                    class="nav-link text-white hover:text-secondary transition-colors font-medium">首页</a>
+                <a href="#" class="nav-link text-white hover:text-secondary transition-colors">七国</a>
+                <a href="imagehub.html" class="nav-link text-white hover:text-secondary transition-colors">图集</a>
+                <a href="characters.html" class="nav-link text-white hover:text-secondary transition-colors">人物</a>
+                <a href="download.html" class="nav-link text-white hover:text-secondary transition-colors">下载</a>
+                <a href="suggest.html" class="nav-link text-white hover:text-secondary transition-colors">关于我们</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="login.html" class="hidden md:inline-block text-white hover:text-secondary transition-colors">
+                    <i class="fa fa-user-circle mr-1"></i> 登录
+                </a>
+                <button class="md:hidden text-white text-xl" id="mobile-menu-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main class="pt-24 pb-16">
+        <div class="container mx-auto px-4">
+            <!-- 轮播图 -->
+            <section class="mb-12 relative overflow-hidden rounded-xl shadow-2xl">
+                <div class="carousel relative h-[60vh] md:h-[70vh] min-h-[400px]">
+                    <div class="carousel-inner relative w-full h-full">
+                        <div
+                            class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                            <img src="images/slideshow(1).jpg" alt="原神轮播图1" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 md:p-12">
+                                <h3 class="text-3xl md:text-4xl font-bold text-white mb-2">踏上冒险之旅</h3>
+                                <p class="text-lg md:text-xl text-gray-200 max-w-2xl">探索提瓦特大陆的每一个角落，发现隐藏的秘密和宝藏。</p>
+                            </div>
+                        </div>
+                        <div
+                            class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                            <img src="images/slideshow(2).jpg" alt="原神轮播图2" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 md:p-12">
+                                <h3 class="text-3xl md:text-4xl font-bold text-white mb-2">结识伙伴</h3>
+                                <p class="text-lg md:text-xl text-gray-200 max-w-2xl">与性格各异的角色相遇，共同展开一段难忘的旅程。</p>
+                            </div>
+                        </div>
+                        <div
+                            class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                            <img src="images/slideshow(3).jpg" alt="原神轮播图3" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 md:p-12">
+                                <h3 class="text-3xl md:text-4xl font-bold text-white mb-2">掌握元素之力</h3>
+                                <p class="text-lg md:text-xl text-gray-200 max-w-2xl">操控七种不同的元素，挑战强大的敌人和谜题。</p>
+                            </div>
+                        </div>
+                        <div
+                            class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                            <img src="images/slideshow(4).png" alt="原神轮播图4" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 md:p-12">
+                                <h3 class="text-3xl md:text-4xl font-bold text-white mb-2">丰富剧情</h3>
+                                <p class="text-lg md:text-xl text-gray-200 max-w-2xl">体验扣人心弦的主线剧情和引人入胜的支线故事。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 轮播图指示器 -->
+                    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+                        <button class="carousel-indicator bg-white/50 hover:bg-white" data-index="0"></button>
+                        <button class="carousel-indicator bg-white/50 hover:bg-white" data-index="1"></button>
+                        <button class="carousel-indicator bg-white/50 hover:bg-white" data-index="2"></button>
+                        <button class="carousel-indicator bg-white/50 hover:bg-white" data-index="3"></button>
+                    </div>
+
+                    <!-- 轮播图控制按钮 -->
+                    <button
+                        class="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-3xl bg-black/30 hover:bg-black/50 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 z-10"
+                        id="prev-slide">
+                        <i class="fa fa-angle-left"></i>
+                    </button>
+                    <button
+                        class="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-3xl bg-black/30 hover:bg-black/50 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 z-10"
+                        id="next-slide">
+                        <i class="fa fa-angle-right"></i>
+                    </button>
                 </div>
-            </td>
-        </tr>
-        <tr>
-            <td id="td5" colspan="4">
-                <p style="text-align:center;">版权所有 &copy;贺宇，23级网络工程1班。</p>
-            </td>
-        </tr>
-    </table>
+            </section>
+
+            <section class="mb-12 text-center">
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white mb-4">原神 - 开放世界角色扮演游戏</h1>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-300 max-w-3xl mx-auto">
+                    欢迎来到提瓦特大陆，在这里开启您的奇幻冒险之旅！
+                </p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-white mb-4">游戏简介</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    《原神》是一款由中国游戏公司 miHoYo 开发的开放世界角色扮演游戏，于 2017 年 1 月底立项，原初测试于 2019 年 6 月 21
+                    日开启。游戏发生在一个被称作“提瓦特大陆”的幻想世界，在这里，被神选中的人将被授予“神之眼”，导引元素之力。玩家将扮演一位名为“旅行者”的神秘角色，在自由的旅行中邂逅性格各异、能力独特的同伴们，和他们一起击败强敌，找回失散的亲人——同时，逐步发掘“原神”的真相。
+                </p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold text-white mb-4">精彩截图</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <img src="images/image (1).png" alt="原神截图1"
+                        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                    <img src="images/image (2).png" alt="原神截图2"
+                        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                    <img src="images/image (3).png" alt="原神截图3"
+                        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                    <img src="images/image.png" alt="原神截图4"
+                        class="rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-white mb-4">立即下载</h2>
+                <a href="download.html"
+                    class="bg-accent hover:bg-accent/80 text-white py-3 px-6 rounded-full inline-block transition-all duration-300 hover:shadow-lg hover:shadow-accent/20">
+                    下载游戏
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        const prevButton = document.getElementById('prev-slide');
+        const nextButton = document.getElementById('next-slide');
+
+        let currentSlide = 0;
+        let slideInterval;
+
+        // 初始化轮播图
+        function initCarousel() {
+            // 设置第一张幻灯片为可见
+            showSlide(0);
+
+            // 自动轮播
+            startSlideInterval();
+
+            // 为指示器添加点击事件
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    showSlide(index);
+                    resetSlideInterval();
+                });
+            });
+
+            // 为控制按钮添加点击事件
+            prevButton.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+                resetSlideInterval();
+            });
+
+            nextButton.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+                resetSlideInterval();
+            });
+        }
+
+        // 显示指定幻灯片
+        function showSlide(index) {
+            // 隐藏所有幻灯片
+            carouselItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.zIndex = '0';
+            });
+
+            // 移除所有指示器的活动状态
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+
+            // 处理索引越界
+            if (index < 0) index = carouselItems.length - 1;
+            if (index >= carouselItems.length) index = 0;
+
+            // 显示当前幻灯片
+            currentSlide = index;
+            carouselItems[currentSlide].style.opacity = '1';
+            carouselItems[currentSlide].style.zIndex = '1';
+            indicators[currentSlide].classList.add('active');
+        }
+
+        // 开始自动轮播
+        function startSlideInterval() {
+            slideInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000); // 每5秒切换一次
+        }
+
+        // 重置自动轮播计时器
+        function resetSlideInterval() {
+            clearInterval(slideInterval);
+            startSlideInterval();
+        }
+
+        // 移动端菜单切换
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 页面加载完成后初始化轮播图
+        window.addEventListener('load', initCarousel);
+    </script>
 </body>
 
 </html>

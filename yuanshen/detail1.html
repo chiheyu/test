@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        /* 轮播图容器样式 */
+        #slider-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            text-align: center;
+            overflow: hidden; /* 防止图片溢出容器 */
+        }
+
+        /* 图片样式 */
+        #slider-container img {
+            width: auto;
+            height: 100%;
+            vertical-align: middle;
+            border: none;
+            display: none;
+            object-fit: contain; /* 使图片全部展示并与边框对齐 */
+        }
+
+        /* 当前显示图片的样式 */
+        #slider-container img.active {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* 箭头按钮样式 */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        /* 左箭头按钮样式 */
+        .left-arrow {
+            left: 10px;
+        }
+
+        /* 右箭头按钮样式 */
+        .right-arrow {
+            right: 10px;
+        }
+
+        /* 小圆点容器样式 - 修改点：从右下角改为底部居中 */
+        .dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%; /* 水平居中 */
+            transform: translateX(-50%); /* 修正定位 */
+        }
+
+        /* 小圆点样式 */
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: gray;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        /* 当前图片对应的小圆点样式 */
+        .dot.active {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 轮播图容器 -->
+    <div id="slider-container">
+        <!-- 轮播图片 -->
+        <img src="images/slideshow(1).jpg" alt="原神" class="active">
+        <img src="images/slideshow(2).jpg" alt="原神">
+        <img src="images/slideshow(3).jpg" alt="原神">
+        <!-- 左箭头按钮 -->
+        <span class="arrow left-arrow" onclick="prevSlide()">&lt;</span>
+        <!-- 右箭头按钮 -->
+        <span class="arrow right-arrow" onclick="nextSlide()">&gt;</span>
+        <!-- 小圆点容器 -->
+        <div class="dots"></div>
+    </div>
+    <script>
+        // 当前显示图片的索引
+        let slideIndex = 0;
+        // 获取所有图片元素
+        const slides = document.querySelectorAll('#slider-container img');
+        // 获取小圆点容器元素
+        const dotsContainer = document.querySelector('.dots');
+        // 自动轮播的时间间隔变量
+        let autoplayInterval;
+
+        // 创建小圆点导航
+        function createDots() {
+            slides.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => showSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            updateDots();
+        }
+
+        // 显示指定索引的图片
+        function showSlide(index) {
+            slides.forEach((slide) => slide.classList.remove('active'));
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot) => dot.classList.remove('active'));
+
+            slideIndex = index;
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        // 切换到下一张图片
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        // 切换到上一张图片
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        // 更新小圆点导航状态
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                if (index === slideIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // 开始自动轮播
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 3000);
+        }
+
+        // 停止自动轮播
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        // 获取轮播图容器元素
+        const slider = document.getElementById('slider-container');
+        // 鼠标进入轮播图区域停止自动轮播
+        slider.addEventListener('mouseenter', stopAutoplay);
+        // 鼠标离开轮播图区域开始自动轮播
+        slider.addEventListener('mouseleave', startAutoplay);
+
+        // 初始化小圆点导航
+        createDots();
+        // 开始自动轮播
+        startAutoplay();
+    </script>
+</body>
+
+</html>

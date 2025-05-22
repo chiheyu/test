@@ -1,81 +1,650 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+
 <head>
-    <title>原神启动</title>
     <meta charset="UTF-8">
-    <style>
-        h2 {
-            color: blue;
-            font-family: "微软雅黑";
-            font-size: 24px;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原神建议反馈 | Genshin Impact Feedback</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E3A8A', // 深蓝主色调，代表原神的神秘氛围
+                        secondary: '#D97706', // 橙色辅助色，代表原神的活力
+                        accent: '#BE123C', // 红色点缀色，用于强调和突出
+                        neutral: '#1F2937', // 深色中性色
+                        'neutral-light': '#F3F4F6', // 浅色中性色
+                    },
+                    fontFamily: {
+                        genshin: ['"ZCOOL XiaoWei"', 'serif'],
+                    },
+                }
+            }
         }
-        p {
-            font-family: "宋体";
-            font-size: 24px;
-            text-indent: 2em;
-            line-height: 1.5em;
-            letter-spacing: 2px;
-        }
-        form {
-            font-family: "宋体";
-            font-size: 18px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="radio"], input[type="checkbox"] {
-            margin-right: 5px;
-        }
-        input[type="submit"] {
-            margin-top: 10px;
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .bg-pattern {
+                background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            }
+            .nav-link {
+                position: relative;
+            }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: -4px;
+                left: 0;
+                background-color: #BE123C;
+                transition: width 0.3s ease;
+            }
+            .nav-link:hover::after {
+                width: 100%;
+            }
+            .btn-primary {
+                @apply bg-accent hover:bg-accent/80 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center;
+            }
+            .btn-secondary {
+                @apply bg-secondary hover:bg-secondary/80 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center;
+            }
+            .form-input {
+                @apply w-full bg-neutral-light/10 border border-gray-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary transition-all;
+            }
+            .form-textarea {
+                @apply w-full bg-neutral-light/10 border border-gray-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary transition-all resize-none;
+            }
+            .form-label {
+                @apply block text-white font-medium mb-2;
+            }
+            .fade-in {
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:shadow-secondary/20 hover:-translate-y-1;
+            }
+            .input-error {
+                @apply border-red-500 focus:ring-red-500;
+            }
+            .progress-bar {
+                @apply h-1 bg-secondary rounded-full transition-all duration-300;
+            }
         }
     </style>
 </head>
-<body>
-    <h1 style="text-align:center">欢迎来到当下最热门的开放类大世界游戏</h1>
-    <p style="text-align:center" font-size="30px">
-        <font color="red">
-            <ruby>
-            原<rp>(</rp><rt>yuan</rt><rp>)</rp>
-            神<rp>(</rp><rt>shen</rt><rp>)</rp>！
-            </ruby>
-        </font>
-    </p>
-    <hr color="red" size="2px" width="100%">
-    <h2>游戏简介</h2>
-    <p>
-        <strong>原神</strong>是一款由中国游戏公司miHoYo开发的开放世界角色扮演游戏，于2017年1月底立项，原初测试于2019年6月21日开启。游戏发生在一个被称作“提瓦特大陆”的幻想世界，在这里，被神选中的人将被授予“神之眼”，导引元素之力。玩家将扮演一位名为“旅行者”的神秘角色，在自由的旅行中邂逅性格各异、能力独特的同伴们，和他们一起击败强敌，找回失散的亲人——同时，逐步发掘“原神”的真相。玩家将扮演“旅行者”，在这个世界中探索、战斗和解谜。游戏中有着丰富的<em><font color=#FF8000>武器、装备、道具、怪物、副本、活动、奇遇</font></em>等元素设定，玩家可以与其他玩家进行多人对战，也可以与机器人进行对抗。游戏的画面精美，音效清晰，玩家可以边打边聊，还可以与好友进行互动。 
-    </p>
-    <hr size="2px" width="100%">
-    <p>作为一名原神的元老级玩家，我已经陪伴原神走过了6个年头。在游戏中，我有遇到过大佬，也成为过别人眼中的大佬；带过萌新，曾经也是萌新中的一员。原神，作为一款开放世界的大作，在我眼中有着无限的魅力，也有着无限的可能。在游戏中，<strong style="color:red">你可以在不同的世界中自由穿梭，与众不同的角色展开各种冒险，性格各异的角色和精美的地图场景</strong>是原神的魅力所在。</p>
 
-    <hr size="2px" width="100%">
-    <h2>原神问卷调查</h2>
-    <form>
-        <label for="playTime">您玩原神多久了？</label>
-        <input type="text" id="playTime" name="playTime"><br>
+<body class="bg-neutral font-genshin text-neutral-light bg-pattern">
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-primary/90 backdrop-blur-md shadow-lg transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="text-2xl font-bold text-white flex items-center">
+                    <img src="images/logo.png" alt="原神" class="h-10 mr-2">
+                    <span>原神</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link text-white hover:text-secondary transition-colors font-medium">首页</a>
+                <a href="#" class="nav-link text-white hover:text-secondary transition-colors">七国</a>
+                <a href="imagehub.html" class="nav-link text-white hover:text-secondary transition-colors">图集</a>
+                <a href="characters.html" class="nav-link text-white hover:text-secondary transition-colors">人物</a>
+                <a href="download.html" class="nav-link text-white hover:text-secondary transition-colors">下载</a>
+                <a href="suggest.html" class="nav-link text-white hover:text-secondary transition-colors">关于我们</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="login.html" class="hidden md:inline-block text-white hover:text-secondary transition-colors">
+                    <i class="fa fa-user-circle mr-1"></i> 登录
+                </a>
+                <button class="md:hidden text-white text-xl" id="mobile-menu-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-primary/95 backdrop-blur-md" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="index.html" class="text-white hover:text-secondary transition-colors py-2 font-medium">首页</a>
+                <a href="#" class="text-white hover:text-secondary transition-colors py-2">七国</a>
+                <a href="imagehub.html" class="text-white hover:text-secondary transition-colors py-2">图集</a>
+                <a href="characters.html" class="text-white hover:text-secondary transition-colors py-2">人物</a>
+                <a href="download.html" class="text-white hover:text-secondary transition-colors py-2">下载</a>
+                <a href="suggest.html" class="text-white hover:text-secondary transition-colors py-2">关于我们</a>
+                <a href="login.html" class="text-white hover:text-secondary transition-colors py-2">
+                    <i class="fa fa-user-circle mr-1"></i> 登录
+                </a>
+            </div>
+        </div>
+    </header>
 
-        <label>您最喜欢的角色是？</label><br>
-        <input type="radio" id="character1" name="favoriteCharacter" value="钟离">
-        <label for="character1">钟离</label><br>
-        <input type="radio" id="character2" name="favoriteCharacter" value="魈">
-        <label for="character2">魈</label><br>
-        <input type="radio" id="character3" name="favoriteCharacter" value="甘雨">
-        <label for="character3">甘雨</label><br>
+    <!-- 主内容 -->
+    <main class="pt-24 pb-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">提瓦特之声</h1>
+                <p class="text-gray-300 max-w-2xl mx-auto">您的每一条建议都是我们前进的动力，帮助我们不断优化游戏体验。</p>
+            </div>
 
-        <label>您喜欢原神的哪些方面？（可多选）</label><br>
-        <input type="checkbox" id="aspect1" name="likedAspects" value="剧情">
-        <label for="aspect1">剧情</label><br>
-        <input type="checkbox" id="aspect2" name="likedAspects" value="角色">
-        <label for="aspect2">角色</label><br>
-        <input type="checkbox" id="aspect3" name="likedAspects" value="画面">
-        <label for="aspect3">画面</label><br>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- 左侧联系信息 -->
+                <div class="lg:col-span-1 space-y-8">
+                    <!-- 联系方式卡片 -->
+                    <div class="bg-primary/50 rounded-xl p-6 md:p-8 card-hover">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <i class="fa fa-comments text-secondary mr-3"></i>
+                            联系方式
+                        </h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-white/10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-envelope text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-medium mb-1">客服邮箱</h3>
+                                    <p class="text-gray-300">support@genshinimpact.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-white/10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-comments text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-medium mb-1">在线客服</h3>
+                                    <p class="text-gray-300">游戏内-设置-帮助与支持</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-white/10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-weibo text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-medium mb-1">微博</h3>
+                                    <p class="text-gray-300">@原神</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-white/10 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-bilibili text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-medium mb-1">哔哩哔哩</h3>
+                                    <p class="text-gray-300">原神</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 常见问题卡片 -->
+                    <div class="bg-primary/50 rounded-xl p-6 md:p-8 card-hover">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <i class="fa fa-question-circle text-secondary mr-3"></i>
+                            常见问题
+                        </h2>
+                        
+                        <div class="space-y-4">
+                            <div class="border-b border-gray-700 pb-4">
+                                <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                                    <span class="text-white font-medium">账号注册与登录问题</span>
+                                    <i class="fa fa-plus text-secondary"></i>
+                                </button>
+                                <div class="hidden mt-2 text-gray-300">
+                                    若遇到账号注册或登录问题，请尝试清除浏览器缓存或重新安装游戏客户端。如仍无法解决，请联系客服邮箱提供详细信息。
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-gray-700 pb-4">
+                                <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                                    <span class="text-white font-medium">游戏下载与安装问题</span>
+                                    <i class="fa fa-plus text-secondary"></i>
+                                </button>
+                                <div class="hidden mt-2 text-gray-300">
+                                    请确保您的设备有足够的存储空间，并检查网络连接是否稳定。推荐从官方渠道下载游戏客户端。
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-gray-700 pb-4">
+                                <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                                    <span class="text-white font-medium">游戏内异常与bug反馈</span>
+                                    <i class="fa fa-plus text-secondary"></i>
+                                </button>
+                                <div class="hidden mt-2 text-gray-300">
+                                    遇到游戏异常或bug时，请尽量提供详细的重现步骤和截图，这将帮助我们更快地定位和解决问题。
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-gray-700 pb-4">
+                                <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                                    <span class="text-white font-medium">充值与礼包问题</span>
+                                    <i class="fa fa-plus text-secondary"></i>
+                                </button>
+                                <div class="hidden mt-2 text-gray-300">
+                                    若充值未到账或礼包无法领取，请先确认支付状态，然后通过游戏内客服或邮箱联系我们，并提供订单号等相关信息。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 右侧表单 -->
+                <div class="lg:col-span-2">
+                    <div class="bg-primary/50 rounded-xl p-6 md:p-8 card-hover">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <i class="fa fa-paper-plane text-secondary mr-3"></i>
+                            发送反馈
+                        </h2>
+                        
+                        <form id="feedback-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="form-label">昵称</label>
+                                    <div class="relative">
+                                        <input type="text" id="name" class="form-input pl-10" placeholder="请输入您的昵称">
+                                        <i class="fa fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                    </div>
+                                    <p class="hidden text-red-500 text-sm mt-1" id="name-error">请输入您的昵称</p>
+                                </div>
+                                <div>
+                                    <label for="email" class="form-label">邮箱</label>
+                                    <div class="relative">
+                                        <input type="email" id="email" class="form-input pl-10" placeholder="请输入您的邮箱">
+                                        <i class="fa fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                    </div>
+                                    <p class="hidden text-red-500 text-sm mt-1" id="email-error">请输入有效的邮箱地址</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="feedback-type" class="form-label">反馈类型</label>
+                                <div class="relative">
+                                    <select id="feedback-type" class="form-input pl-10">
+                                        <option value="" disabled selected>请选择反馈类型</option>
+                                        <option value="bug">游戏Bug</option>
+                                        <option value="suggestion">功能建议</option>
+                                        <option value="improvement">体验优化</option>
+                                        <option value="praise">表扬与鼓励</option>
+                                        <option value="other">其他问题</option>
+                                    </select>
+                                    <i class="fa fa-list absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                </div>
+                                <p class="hidden text-red-500 text-sm mt-1" id="type-error">请选择反馈类型</p>
+                            </div>
+                            
+                            <div>
+                                <label for="content" class="form-label">反馈内容</label>
+                                <div class="relative">
+                                    <textarea id="content" rows="6" class="form-input pl-10 pt-10" placeholder="请详细描述您的问题或建议..."></textarea>
+                                    <i class="fa fa-comment absolute left-3 top-3 text-gray-400"></i>
+                                </div>
+                                <div class="flex justify-between items-center mt-2">
+                                    <p class="text-gray-400 text-sm">请提供详细信息，这将帮助我们更好地理解您的问题</p>
+                                    <p class="text-gray-400 text-sm"><span id="char-count">0</span>/500</p>
+                                </div>
+                                <p class="hidden text-red-500 text-sm mt-1" id="content-error">请输入反馈内容，至少20个字符</p>
+                            </div>
+                            
+                            <div>
+                                <label class="form-label">上传截图（可选）</label>
+                                <div class="border-2 border-dashed border-gray-600 rounded-lg p-6 text-center hover:border-secondary transition-colors cursor-pointer" id="file-upload-area">
+                                    <i class="fa fa-cloud-upload text-3xl text-gray-400 mb-2"></i>
+                                    <p class="text-gray-300">点击或拖拽文件到此处上传</p>
+                                    <p class="text-gray-400 text-sm mt-1">支持JPG、PNG格式，最大5MB</p>
+                                    <input type="file" id="file-upload" class="hidden" multiple accept="image/jpeg,image/png">
+                                </div>
+                                <div id="file-preview" class="mt-3 flex flex-wrap gap-2"></div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="privacy" type="checkbox" class="w-4 h-4 text-secondary bg-neutral-light/10 border-gray-600 rounded focus:ring-secondary">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="privacy" class="text-gray-300">我同意米哈游根据<a href="#" class="text-secondary hover:underline">隐私政策</a>处理我的反馈信息</label>
+                                </div>
+                            </div>
+                            <p class="hidden text-red-500 text-sm mt-1" id="privacy-error">请同意隐私政策</p>
+                            
+                            <button type="submit" class="btn-primary w-full">
+                                <i class="fa fa-paper-plane mr-2"></i> 提交反馈
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- 反馈统计 -->
+                    <div class="mt-8 bg-primary/50 rounded-xl p-6 md:p-8 card-hover">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <i class="fa fa-bar-chart text-secondary mr-3"></i>
+                            反馈统计
+                        </h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="bg-neutral p-6 rounded-lg text-center">
+                                <div class="text-4xl font-bold text-secondary mb-2">98%</div>
+                                <p class="text-gray-300">问题解决率</p>
+                            </div>
+                            
+                            <div class="bg-neutral p-6 rounded-lg text-center">
+                                <div class="text-4xl font-bold text-secondary mb-2">24小时</div>
+                                <p class="text-gray-300">平均响应时间</p>
+                            </div>
+                            
+                            <div class="bg-neutral p-6 rounded-lg text-center">
+                                <div class="text-4xl font-bold text-secondary mb-2">50万+</div>
+                                <p class="text-gray-300">玩家反馈</p>
+                            </div>
+                            
+                            <div class="bg-neutral p-6 rounded-lg text-center">
+                                <div class="text-4xl font-bold text-secondary mb-2">95%</div>
+                                <p class="text-gray-300">玩家满意度</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-xl font-bold text-white mb-4">近期更新</h3>
+                            <div class="space-y-4">
+                                <div class="bg-neutral p-4 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="text-white font-medium">4.2版本优化内容</h4>
+                                        <span class="text-xs bg-secondary/20 text-secondary px-2 py-1 rounded-full">最新</span>
+                                    </div>
+                                    <p class="text-gray-300">根据玩家反馈，优化了战斗系统的操作体验，修复了若干角色技能异常问题。</p>
+                                    <div class="mt-2 text-xs text-gray-400">更新时间: 2023-12-06</div>
+                                </div>
+                                
+                                <div class="bg-neutral p-4 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="text-white font-medium">任务流程优化</h4>
+                                        <span class="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">已解决</span>
+                                    </div>
+                                    <p class="text-gray-300">优化了部分主线任务的指引，减少了玩家在任务中的困惑。</p>
+                                    <div class="mt-2 text-xs text-gray-400">更新时间: 2023-11-20</div>
+                                </div>
+                                
+                                <div class="bg-neutral p-4 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="text-white font-medium">PC端性能优化</h4>
+                                        <span class="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">已解决</span>
+                                    </div>
+                                    <p class="text-gray-300">针对中低配PC进行了性能优化，提升了游戏的流畅度和稳定性。</p>
+                                    <div class="mt-2 text-xs text-gray-400">更新时间: 2023-11-05</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-        <label for="suggestion">您对原神有什么建议？</label><br>
-        <textarea id="suggestion" name="suggestion" rows="4" cols="50"></textarea><br>
+    <!-- 页脚 -->
+    <footer class="bg-neutral-dark py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-xl font-bold text-white flex items-center">
+                        <img src="images/logo.png" alt="原神" class="h-8 mr-2">
+                        <span>原神</span>
+                    </a>
+                    <p class="text-gray-400 mt-2">© 2023 miHoYo. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-brands fa-weibo text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-brands fa-wechat text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-brands fa-bilibili text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-brands fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-brands fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-white font-medium mb-4">关于原神</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">游戏介绍</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">世界观</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">角色介绍</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">开发历程</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-medium mb-4">支持与服务</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">帮助中心</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">意见反馈</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">防沉迷系统</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-medium mb-4">法律信息</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">隐私政策</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">用户协议</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">知识产权</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">未成年人保护</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-        <input type="submit" value="提交">
-    </form>
+    <!-- 成功提交模态框 -->
+    <div id="success-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-primary rounded-xl p-8 max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="modal-content">
+            <div class="text-center">
+                <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa fa-check text-2xl text-green-500"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">反馈提交成功</h3>
+                <p class="text-gray-300 mb-6">感谢您的反馈，我们会尽快处理并回复您。</p>
+                <button id="close-modal" class="btn-primary w-full">
+                    确定
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-3');
+            } else {
+                header.classList.add('py-3');
+                header.classList.remove('py-2');
+            }
+        });
+
+        // 文件上传
+        document.getElementById('file-upload-area').addEventListener('click', function() {
+            document.getElementById('file-upload').click();
+        });
+
+        document.getElementById('file-upload').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const previewArea = document.getElementById('file-preview');
+            previewArea.innerHTML = '';
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const preview = document.createElement('div');
+                        preview.className = 'relative';
+                        preview.innerHTML = `
+                            <img src="${e.target.result}" alt="Preview" class="w-20 h-20 object-cover rounded-lg">
+                            <button type="button" class="absolute -top-2 -right-2 bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs" onclick="removeFile(this)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        `;
+                        previewArea.appendChild(preview);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+
+        // 移除文件预览
+        window.removeFile = function(button) {
+            button.parentElement.remove();
+        };
+
+        // 字符计数
+        document.getElementById('content').addEventListener('input', function() {
+            const count = this.value.length;
+            document.getElementById('char-count').textContent = count;
+            
+            if (count > 500) {
+                this.value = this.value.substring(0, 500);
+                document.getElementById('char-count').textContent = 500;
+            }
+        });
+
+        // FAQ 切换
+        window.toggleFAQ = function(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        };
+
+        // 表单验证
+        document.getElementById('feedback-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            // 验证昵称
+            const name = document.getElementById('name');
+            const nameError = document.getElementById('name-error');
+            if (!name.value.trim()) {
+                name.classList.add('input-error');
+                nameError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                name.classList.remove('input-error');
+                nameError.classList.add('hidden');
+            }
+            
+            // 验证邮箱
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value.trim())) {
+                email.classList.add('input-error');
+                emailError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                email.classList.remove('input-error');
+                emailError.classList.add('hidden');
+            }
+            
+            // 验证反馈类型
+            const type = document.getElementById('feedback-type');
+            const typeError = document.getElementById('type-error');
+            if (!type.value) {
+                type.classList.add('input-error');
+                typeError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                type.classList.remove('input-error');
+                typeError.classList.add('hidden');
+            }
+            
+            // 验证内容
+            const content = document.getElementById('content');
+            const contentError = document.getElementById('content-error');
+            if (content.value.length < 20) {
+                content.classList.add('input-error');
+                contentError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                content.classList.remove('input-error');
+                contentError.classList.add('hidden');
+            }
+            
+            // 验证隐私政策
+            const privacy = document.getElementById('privacy');
+            const privacyError = document.getElementById('privacy-error');
+            if (!privacy.checked) {
+                privacyError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                privacyError.classList.add('hidden');
+            }
+            
+            // 如果验证通过，显示成功模态框
+            if (isValid) {
+                const modal = document.getElementById('success-modal');
+                const modalContent = document.getElementById('modal-content');
+                
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modalContent.classList.remove('scale-95', 'opacity-0');
+                    modalContent.classList.add('scale-100', 'opacity-100');
+                }, 10);
+                
+                // 重置表单
+                this.reset();
+                document.getElementById('file-preview').innerHTML = '';
+                document.getElementById('char-count').textContent = '0';
+            }
+        });
+
+        // 关闭模态框
+        document.getElementById('close-modal').addEventListener('click', function() {
+            const modal = document.getElementById('success-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        });
+    </script>
 </body>
+
 </html>
