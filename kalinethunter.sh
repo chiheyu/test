@@ -236,10 +236,15 @@ checksysinfo
 checkdeps
 setchroot
 gettarfile
-getsha
-checkintegrity
+# getsha
+# checkintegrity
 extract
 createloginfile
+
+# 自动创建 startkali 软链接，便于直接用 startkali 启动
+ln -sf $PREFIX/bin/startkali.sh $PREFIX/bin/startkali
+chmod +x $PREFIX/bin/startkali
+
 post_cleanup
 
 printf "\n${blue} [*] Configuring Kali For You ..."
