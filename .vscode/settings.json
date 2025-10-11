@@ -27,5 +27,6 @@
         "python"
     ],
     "livePreview.defaultPreviewPath": "/web/test.html",
-    "dotnet.defaultSolution": "disable"
+    "dotnet.defaultSolution": "disable",
+    "C_Cpp.default.compilerPath": "C:/MinGW/mingw64/bin/gcc.exe"
 }
